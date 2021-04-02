@@ -8,12 +8,27 @@
     <title>@ViewData["Title"] - Person</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .img-thumbnail {
+            padding: 0;
+            height: 36px;
+            border-radius: 0;
+            border: 0;
+            background-color: transparent;
+        }
+
+        .img-fluid {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
 </head>
 <body>
     <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="/Person/Index">Persons</a>
+                <a class="navbar-brand" href="/Recipe/Index">Recipe</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -68,18 +83,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-<style>
-    .img-thumbnail {
-        padding: 0;
-        height: 36px;
-        border-radius: 0;
-        border: 0;
-        background-color: transparent;
-    }
-
-    .img-fluid {
-        width: 100%;
-        height: auto;
-    }
-</style>
 
