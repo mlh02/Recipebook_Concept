@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/RecipeProject.csproj": {}
+    "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/RecipeProject.csproj": {}
   },
   "projects": {
-    "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/RecipeProject.csproj": {
+    "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/RecipeProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/RecipeProject.csproj",
+        "projectUniqueName": "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/RecipeProject.csproj",
         "projectName": "RecipeProject",
-        "projectPath": "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/RecipeProject.csproj",
+        "projectPath": "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/RecipeProject.csproj",
         "packagesPath": "/Users/montygouki/.nuget/packages/",
-        "outputPath": "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/obj/",
+        "outputPath": "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/montygouki/.config/NuGet/NuGet.Config"
@@ -85,12 +85,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.8, 3.1.8]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -99,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

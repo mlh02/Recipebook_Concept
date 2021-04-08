@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YlDjyli0TdmWMnW9zpKoCE8MH4AAYaDWs2uoHl0+RkdFFsZL9BYlqU5LYV64qgLUvotSFbCPRCKmOjKfmmaEuA==",
+  "dgSpecHash": "CnABedk7bVnTpwmhhJdEIw5KPvVZqYIIWBibtecfehT7Nj0mtfxJ5uckRXrKxlU8N2niI5PM9B4zXi9my0lGLw==",
   "success": true,
-  "projectFilePath": "/Users/montygouki/Desktop/March_Projects/RecipeProject/RecipeProject/RecipeProject.csproj",
+  "projectFilePath": "/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/RecipeProject.csproj",
   "expectedPackageFiles": [
     "/Users/montygouki/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/montygouki/.nuget/packages/microsoft.aspnetcore.html.abstractions/2.2.0/microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -172,8 +172,7 @@
     "/Users/montygouki/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/montygouki/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/Users/montygouki/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "/Users/montygouki/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "/Users/montygouki/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
+    "/Users/montygouki/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

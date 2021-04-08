@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+//using Microsoft.Extensions.Hosting;
 using RecipeProject.Models;
 
 namespace RecipeProject.Controllers
@@ -12,30 +15,111 @@ namespace RecipeProject.Controllers
     public class RecipeController : Controller
     {
         private readonly DataBaseContext _context;
-
-        public RecipeController(DataBaseContext context)
+        [Obsolete]
+        private readonly IHostingEnvironment _environment;
+        [Obsolete]
+        public RecipeController(DataBaseContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _environment = hostingEnvironment;
+
         }
 
         // GET: Recipe
-        public async Task<IActionResult> Index()
+        //public IActionResult Index()
+        //{
+        //    var dataBaseContext = _context.Recipes.Include(r => r.User);
+
+
+        //    var q = (from r in _context.Recipes
+        //                                            join u in _context.Users on r.UserId equals u.Id
+        //                                            select new UserRecipe
+        //                                            {
+        //                                                RecipeId = r.Id,
+        //                                                RecipeName = r.Name,
+        //                                                RecipeImage = r.Image,
+        //                                                RecipeDescription = r.Description,
+        //                                                RecipeTimeToComplete = r.TimeToComplete,
+        //                                                Image = u.Image,
+        //                                                Name = u.Name,
+        //                                                Id = u.Id
+        //                                            });
+
+        //    return View(q.ToList());
+        //}
+
+        [Route("recipe/{Page}")]   // recipe/1
+        public IActionResult Index(int Page)
         {
-            var dataBaseContext = _context.Recipes.Include(r => r.User);
-            return View(await dataBaseContext.ToListAsync());
+            int Total = _context.Recipes.Count();
+            int PageSize = 3;
+
+            ViewBag.Total = Convert.ToInt32(Math.Ceiling((double)Total / (double)PageSize));
+            if (Page != 1)
+            {
+                ViewBag.Previous = Page - 1;
+            }
+            else
+            {
+                ViewBag.Previous = null;
+            }
+            if (Page < Total)
+            {
+                ViewBag.Next = Page + 1;
+            }
+            else
+            {
+                ViewBag.Next = null;
+            }
+
+
+            int Skip = PageSize * (Page - 1);
+
+            List<UserRecipe> q = (List<UserRecipe>)(from r in _context.Recipes
+                                                            join u in _context.Users on r.UserId equals u.Id
+                                                            select new UserRecipe
+                                                            {
+                                                                RecipeId = r.Id,
+                                                                RecipeName = r.Name,
+                                                                RecipeImage = r.Image,
+                                                                RecipeDescription = r.Description,
+                                                                RecipeTimeToComplete = r.TimeToComplete,
+                                                                Image = u.Image,
+                                                                Name = u.Name,
+                                                                Id = u.Id
+                                                            }).ToList();
+
+            return View(q.AsQueryable().Skip(Skip).Take(PageSize).ToList());
+
         }
 
+
         // GET: Recipe/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var recipe = await _context.Recipes
-                .Include(r => r.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            UserRecipe recipe = (UserRecipe)(from r in _context.Recipes
+                                                     join u in _context.Users on r.UserId equals u.Id
+                                                     where r.Id == id
+                                                     select new UserRecipe
+                                                     {
+                                                         RecipeId = r.Id,
+                                                         RecipeName = r.Name,
+                                                         RecipeImage = r.Image,
+                                                         RecipeDescription = r.Description,
+                                                         RecipeTimeToComplete = r.TimeToComplete,
+                                                         Image = u.Image,
+                                                         Name = u.Name,
+                                                         Id = u.Id,
+                                                         Steps = _context.Steps.Where(f => f.RecipeId == r.Id).ToList(),
+                                                         //Ingredients = _context.Ingredients.Where(f => f.RecipeId == r.Id).ToList()
+                                                     }).FirstOrDefault();
+
+
             if (recipe == null)
             {
                 return NotFound();
@@ -43,11 +127,10 @@ namespace RecipeProject.Controllers
 
             return View(recipe);
         }
-
         // GET: Recipe/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -56,8 +139,32 @@ namespace RecipeProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,TimeToComplete,UserId")] Recipe recipe)
+        public async Task<IActionResult> Create(UserRecipe recipeView)
         {
+            string fileName = string.Empty;
+            string path = string.Empty;
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                var extension = Path.GetExtension(files[0].FileName);
+                fileName = Guid.NewGuid().ToString() + extension;
+                path = Path.Combine(_environment.WebRootPath, "RecipeImages") + "/" + fileName;
+                using (FileStream fs = System.IO.File.Create(path))
+                {
+                    files[0].CopyTo(fs);
+                    fs.Flush();
+                }
+                recipeView.RecipeImage = fileName;
+            }
+
+
+            Recipe recipe = new Recipe();
+            recipe.Description = recipeView.RecipeDescription;
+            recipe.Name = recipeView.RecipeName;
+            recipe.TimeToComplete = recipeView.RecipeTimeToComplete;
+            recipe.Image = recipeView.RecipeImage;
+            recipe.UserId = Convert.ToInt32(User.FindFirst("Id").Value);
+
             if (ModelState.IsValid)
             {
                 _context.Add(recipe);
