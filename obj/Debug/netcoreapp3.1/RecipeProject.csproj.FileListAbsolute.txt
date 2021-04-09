@@ -338,11 +338,14 @@
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/RecipeProject.RazorCoreGenerate.cache
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
+<<<<<<< HEAD
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Recipe/Create.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Recipe/Delete.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Recipe/Details.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Recipe/Edit.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Recipe/Index.cshtml.g.cs
+=======
+>>>>>>> MLH02_FixRecipeFunctions
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
@@ -362,3 +365,12 @@
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/RecipeProject.dll
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/RecipeProject.pdb
 /Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/RecipeProject.genruntimeconfig.cache
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Create.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Delete.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Details.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Edit.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Index.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Delete 2.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Details 2.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Edit 2.cshtml.g.cs
+/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/obj/Debug/netcoreapp3.1/Razor/Views/Step/Index 2.cshtml.g.cs
