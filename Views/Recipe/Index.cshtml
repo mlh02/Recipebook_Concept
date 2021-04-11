@@ -5,11 +5,11 @@
 <div class="row">
     <div class="col-8">
         <a asp-action="Create">Create New</a>
-</div>
+    </div>
 
 
 
-<table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th>
@@ -30,25 +30,25 @@
         <tbody>
             @foreach (var item in Model)
             {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RecipeTimeToComplete)
-        </td>
-        <td>
-            <img src="~/RecipeImages/@Html.DisplayFor(modelItem => item.RecipeImage)" height="100px" width="100px" />
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.RecipeId">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.RecipeId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.RecipeId">Delete</a>
-        </td>
-    </tr>
-    }
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecipeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecipeDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecipeTimeToComplete)
+                    </td>
+                    <td>
+                        <img src="~/RecipeImages/@Html.DisplayFor(modelItem => item.RecipeImage)" height="100px" width="100px" />
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RecipeId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.RecipeId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RecipeId">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>

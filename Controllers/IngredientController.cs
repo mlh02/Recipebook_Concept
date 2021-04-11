@@ -9,23 +9,23 @@ using RecipeProject.Models;
 
 namespace RecipeProject.Controllers
 {
-    public class StepController : Controller
+    public class IngredientController : Controller
     {
         private readonly DataBaseContext _context;
 
-        public StepController(DataBaseContext context)
+        public IngredientController(DataBaseContext context)
         {
             _context = context;
         }
 
-        // GET: Step
+        // GET: Ingredient
         public async Task<IActionResult> Index()
         {
-            var dataBaseContext = _context.Steps.Include(s => s.Recipe).Include(s => s.User);
+            var dataBaseContext = _context.Ingredients.Include(i => i.Recipe);
             return View(await dataBaseContext.ToListAsync());
         }
 
-        // GET: Step/Details/5
+        // GET: Ingredient/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,19 +33,18 @@ namespace RecipeProject.Controllers
                 return NotFound();
             }
 
-            var step = await _context.Steps
-                .Include(s => s.Recipe)
-                .Include(s => s.User)
+            var ingredient = await _context.Ingredients
+                .Include(i => i.Recipe)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (step == null)
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(step);
+            return View(ingredient);
         }
 
-        // GET: Step/Create
+        // GET: Ingredient/Create
         public IActionResult Create(int recipeId)
         {
             ViewData["RecipeId"] = recipeId;
@@ -53,32 +52,24 @@ namespace RecipeProject.Controllers
             return View();
         }
 
-        // POST: Step/Create
+        // POST: Ingredient/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Step step)
+        public async Task<IActionResult> Create([Bind("Id,Name,RecipeId")] Ingredient ingredient)
         {
-
-            //Step step = new Step();
-            //step.RecipeId = userRecipe.RecipeId;
-            //step.Name = 
-            step.UserId = Convert.ToInt32(User.FindFirst("Id").Value);
-            //userRecipe.Steps.Add(step);
             if (ModelState.IsValid)
             {
-                _context.Add(step);
+                _context.Add(ingredient);
                 await _context.SaveChangesAsync();
-                return Redirect("~/Recipe/Details/" + step.RecipeId);
+                return Redirect("~/Recipe/Details/" + ingredient.RecipeId);
             }
-            //ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Id", step.RecipeId);
-            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", step.UserId);
-
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Description", ingredient.RecipeId);
             return RedirectToAction("Index", "Recipe", new { Page = 1 });
         }
 
-        // GET: Step/Edit/5
+        // GET: Ingredient/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,24 +77,23 @@ namespace RecipeProject.Controllers
                 return NotFound();
             }
 
-            var step = await _context.Steps.FindAsync(id);
-            if (step == null)
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            if (ingredient == null)
             {
                 return NotFound();
             }
-            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Id", step.RecipeId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", step.UserId);
-            return View(step);
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Description", ingredient.RecipeId);
+            return View(ingredient);
         }
 
-        // POST: Step/Edit/5
+        // POST: Ingredient/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,UserId,RecipeId")] Step step)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,RecipeId")] Ingredient ingredient)
         {
-            if (id != step.Id)
+            if (id != ingredient.Id)
             {
                 return NotFound();
             }
@@ -112,12 +102,12 @@ namespace RecipeProject.Controllers
             {
                 try
                 {
-                    _context.Update(step);
+                    _context.Update(ingredient);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StepExists(step.Id))
+                    if (!IngredientExists(ingredient.Id))
                     {
                         return NotFound();
                     }
@@ -128,12 +118,11 @@ namespace RecipeProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Id", step.RecipeId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", step.UserId);
-            return View(step);
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Description", ingredient.RecipeId);
+            return View(ingredient);
         }
 
-        // GET: Step/Delete/5
+        // GET: Ingredient/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,32 +130,31 @@ namespace RecipeProject.Controllers
                 return NotFound();
             }
 
-            var step = await _context.Steps
-                .Include(s => s.Recipe)
-                .Include(s => s.User)
+            var ingredient = await _context.Ingredients
+                .Include(i => i.Recipe)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (step == null)
+            if (ingredient == null)
             {
                 return NotFound();
             }
 
-            return View(step);
+            return View(ingredient);
         }
 
-        // POST: Step/Delete/5
+        // POST: Ingredient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var step = await _context.Steps.FindAsync(id);
-            _context.Steps.Remove(step);
+            var ingredient = await _context.Ingredients.FindAsync(id);
+            _context.Ingredients.Remove(ingredient);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StepExists(int id)
+        private bool IngredientExists(int id)
         {
-            return _context.Steps.Any(e => e.Id == id);
+            return _context.Ingredients.Any(e => e.Id == id);
         }
     }
 }

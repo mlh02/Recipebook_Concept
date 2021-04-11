@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{2811D46E-2052-4A34-B9C9-D30518B3D6F6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Step.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Recipe/Details.cshtml">
     <Files>
-      <File FileName="Controllers/RecipeController.cs" Line="174" Column="24" />
-      <File FileName="Controllers/StepController.cs" Line="50" Column="1" />
-      <File FileName="Views/Recipe/Details.cshtml" Line="5" Column="1" />
-      <File FileName="Models/UserRecipe.cs" Line="22" Column="31" />
-      <File FileName="Views/Step/Create.cshtml" Line="22" Column="36" />
-      <File FileName="Models/Recipe.cs" Line="28" Column="1" />
-      <File FileName="Models/Step.cs" Line="23" Column="1" />
+      <File FileName="Controllers/RecipeController.cs" Line="107" Column="1" />
+      <File FileName="Controllers/StepController.cs" Line="78" Column="19" />
+      <File FileName="Controllers/IngredientController.cs" Line="65" Column="51" />
+      <File FileName="Views/Recipe/Details.cshtml" Line="140" Column="96" />
+      <File FileName="Views/Step/Create.cshtml" Line="22" Column="106" />
+      <File FileName="Models/Comment.cs" Line="1" Column="1" />
+      <File FileName="Controllers/CommentController.cs" Line="72" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,12 +16,19 @@
           <Node name="RecipeProject" expanded="True">
             <Node name="RecipeProject" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Step.cs" selected="True" />
-              </Node>
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Recipe" expanded="True" />
+                <Node name="Comment" expanded="True" />
+                <Node name="Recipe" expanded="True">
+                  <Node name="Details.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
                 <Node name="Step" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -38,10 +45,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/Controllers/StepController.cs" relfile="Controllers/StepController.cs" line="62" column="1" />
-      <Breakpoint file="/Users/montygouki/Desktop/April_Projects/Recipebook_Concept/Controllers/StepController.cs" relfile="Controllers/StepController.cs" line="50" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
