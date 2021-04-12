@@ -1,42 +1,152 @@
-@model RecipeProject.Models.Recipe
+﻿@model RecipeProject.Models.UserRecipe
 
-@{
-    ViewData["Title"] = "Details";
+@{ ViewData["Title"] = "Details"; }
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<hr>
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-10"><h1>Welcome @Model.Name! </h1></div>
+        @{var Img = User.FindFirst("Image").Value; }
+        <div class="col-sm-2"><a asp-area="" asp-controller="User" asp-action="Details" asp-route-id="@User.FindFirst("Id").Value"><img title="profile image" class="img-square img-responsive class="img-thumbnail &nbsp;&nbsp;" src="~/images/@Html.DisplayFor(model => Img)" /></a></div>
+    </div>
+    <p>
+        @*<a asp-controller="Step" asp-action="Create" asp-route-id="@Model.RecipeId">New Step</a>*@
+        <a asp-action="Create" asp-controller="Step" asp-route-recipeId="@Model.RecipeId">Create New Step</a>
+
+        <a asp-action="Create" asp-controller="Ingredient" asp-route-recipeId="@Model.RecipeId">Create New Ingredient</a>
+        <a asp-action="Create" asp-controller="Comment" asp-route-recipeId="@Model.RecipeId">Create New Comment</a>
+    </p>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+
+
+            <div class="text-center">
+                <img src="~/RecipeImages/@Model.RecipeImage" width="250" height="250">
+
+            </div></hr><br>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Recipe Name <i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-body">@Model.RecipeName</div>
+            </div>
+
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                </div>
+            </div>
+
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#steps">Steps</a></li>
+                <li><a data-toggle="tab" href="#ings">Ingredients</a></li>
+                <li><a data-toggle="tab" href="#comment">Comments</a></li>
+
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+
+                    <hr>
+
+                    @{var m = 1; }
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"> Recipe Name  </li>
+                        <li class="list-group-item ">@Model.RecipeName </li>
+
+                        <li class="list-group-item disabled"> Recipe Description </li>
+                        @if (Model.RecipeDescription.ToList().Count > 0)
+                        {
+            <li class="list-group-item "> @Model.RecipeDescription </li>
+ }
+        else
+        {
+<li class="list-group-item "> Nothing... </li>
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Recipe</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeToComplete)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TimeToComplete)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+                        @*<li class="list-group-item disabled"> @m ) @Model.RecipeImage </li>*@
+
+
+                </div><!--/tab-pane-->
+                <div class="tab-pane" id="steps">
+                    @if (Model.Steps.Count > 0)
+                    {
+        @for (int i = 0; i < Model.Steps.Count; i++)
+        {
+            var w = i + 1;
+<ul class="list-group">
+    <li class="list-group-item disabled"> @w ) @Model.Steps[i].Name </li>
+</ul>}}
+
+                </div><!--/tab-pane-->
+                <div class="tab-pane" id="ings">
+
+                                        @if (Model.Ingredients.Count > 0)
+                                        {
+
+                            @for (int i = 0; i < Model.Ingredients.Count; i++)
+                            {
+                                var c = i + 1;
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"> @c) @Model.Ingredients[i].Name </li>
+                    </ul>}}
+
+                                    </div>
+                <div class="tab-pane" id="comment">
+
+                                        @if (Model.Comments.Count > 0)
+                                        {
+
+                            @for (int i = 0; i < Model.Comments.Count; i++)
+                            {
+                                var c = i + 1;
+                    <ul class="list-group">
+                        <li class="list-group-item disabled"> @c) @Model.Comments[i].Body </li>
+                        <li class="list-group-item disabled"> @c) @Model.Comments[i].Rating </li>
+
+                    </ul>}}
+
+                                    </div>
+
+
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+
+    </div><!--/col-9-->
+</div><!--/row-->
