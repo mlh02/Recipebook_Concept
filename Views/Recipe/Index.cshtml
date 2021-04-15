@@ -9,46 +9,65 @@
 
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipeName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipeDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RecipeTimeToComplete)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipeName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipeDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RecipeTimeToComplete)
-                    </td>
-                    <td>
-                        <img src="~/RecipeImages/@Html.DisplayFor(modelItem => item.RecipeImage)" height="100px" width="100px" />
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.RecipeId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.RecipeId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.RecipeId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var item in Model)
+    {
+
+        <div class="cardBox border-success mb-3" style="width: 18rem;">
+            <a asp-action="Details" asp-route-id="@item.Id">
+                <img src="~/RecipeImages/@Html.DisplayFor(modelItem => item.RecipeImage)" class="img-fluid imgSucc" />
+            </a>
+            <div class="card-body text-success">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.RecipeDescription)</h5>
+                <p class="card-text">@item.Name</p>
+                <div class="container">
+                    <div class="card-footer bg-transparent border-success"></div>
+                    <div class="row">
+                        @Html.ActionLink("Details", "Details", new { id = @item.RecipeId },
+                                                                                                          new { @class = "btn btn-outline-info btn-lg btn-block" })
+                        @if (Convert.ToInt32(User.FindFirst("Id").Value) == item.Id)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = @item.RecipeId },
+                                                                                                                         new { @class = "btn btn-outline-info btn-lg btn-block" })
+                            @Html.ActionLink("Delete", "Delete", new { id = @item.RecipeId },
+                                                                                                              new { @class = "btn btn-outline-info btn-lg btn-block" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+    <style>
+
+
+
+        .cardBox {
+            float: left;
+            margin-left: 40px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            background-color: whitesmoke;
+            outline-style: solid;
+            outline-color: darkblue;
+        }
+
+        .img {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+            outline-color: black;
+            outline-width: 4px;
+        }
+
+        .imgSucc {
+            outline-color: green;
+            outline-width: 3px;
+        }
+
+        .imgProg {
+            outline-color: green;
+            outline-width: 3px;
+        }
+    </style>

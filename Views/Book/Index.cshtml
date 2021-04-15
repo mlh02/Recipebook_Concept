@@ -1,0 +1,14 @@
+@model IEnumerable<RecipeProject.Models.Book>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Index</h1>
+
+<h1 class="text-center"><i class="fas fa-comment-dollar text-success"></i>Book History</h1>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model)
+
+</div>
+
+

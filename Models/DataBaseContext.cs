@@ -13,6 +13,8 @@ namespace RecipeProject.Models
         public DbSet<Step> Steps { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Book> Books { get; set; }
+
 
     }
 

@@ -1,13 +1,11 @@
 ﻿<Properties StartupConfiguration="{2811D46E-2052-4A34-B9C9-D30518B3D6F6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Recipe/Details.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="Controllers/RecipeController.cs" Line="107" Column="1" />
-      <File FileName="Controllers/StepController.cs" Line="78" Column="19" />
-      <File FileName="Controllers/IngredientController.cs" Line="65" Column="51" />
-      <File FileName="Views/Recipe/Details.cshtml" Line="140" Column="96" />
-      <File FileName="Views/Step/Create.cshtml" Line="22" Column="106" />
-      <File FileName="Models/Comment.cs" Line="1" Column="1" />
-      <File FileName="Controllers/CommentController.cs" Line="72" Column="1" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="95" Column="11" />
+      <File FileName="Controllers/BookController.cs" Line="66" Column="1" />
+      <File FileName="Views/Book/AddOrEdit.cshtml" Line="14" Column="31" />
+      <File FileName="Views/Book/Index.cshtml" Line="10" Column="15" />
+      <File FileName="Views/Book/_ViewAll.cshtml" Line="33" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,18 +14,13 @@
           <Node name="RecipeProject" expanded="True">
             <Node name="RecipeProject" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Comment" expanded="True" />
-                <Node name="Recipe" expanded="True">
-                  <Node name="Details.cshtml" selected="True" />
+                <Node name="Book" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
                 </Node>
-                <Node name="Shared" expanded="True" />
-                <Node name="Step" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
             </Node>
@@ -36,7 +29,9 @@
       </Pad>
       <Pad Id="ClassPad">
         <State name="__root__">
-          <Node name="RecipeProject" expanded="True" selected="True" />
+          <Node name="RecipeProject" expanded="True" selected="True">
+            <Node name="RecipeProject" expanded="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>
