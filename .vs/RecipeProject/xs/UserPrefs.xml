@@ -1,11 +1,8 @@
 ﻿<Properties StartupConfiguration="{2811D46E-2052-4A34-B9C9-D30518B3D6F6}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="Views/Shared/_Layout.cshtml" Line="95" Column="11" />
-      <File FileName="Controllers/BookController.cs" Line="66" Column="1" />
-      <File FileName="Views/Book/AddOrEdit.cshtml" Line="14" Column="31" />
-      <File FileName="Views/Book/Index.cshtml" Line="10" Column="15" />
-      <File FileName="Views/Book/_ViewAll.cshtml" Line="33" Column="1" />
+      <File FileName="../../AjaxPractice/index.html" Line="14" Column="1" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="52" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
